@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/movieFragment">
+
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.wahyouwebid.app.modules.movie.presentation.MovieFragment"
+        android:label="MovieFragment"
+        tools:layout="@layout/fragment_movie">
+
+        <action
+            android:id="@+id/action_movieFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment"
+            app:enterAnim="@anim/anim_slide_in_top"
+            app:exitAnim="@anim/anim_slide_out_top"
+            app:popEnterAnim="@anim/anim_slide_in_bottom"
+            app:popExitAnim="@anim/anim_slide_out_bottom"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.wahyouwebid.app.modules.detail.presentation.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail"/>
+
+
+</navigation>

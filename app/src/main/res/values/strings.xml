@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestIndivara</string>
+    <string name="title_movie">MOVIES</string>
+    <string name="title_now_playing">NOW PLAYING</string>
+    <string name="title_popular">POPULAR</string>
+    <string name="title_top_rated">TOP RATED</string>
+    <string name="title_content_description">ImageView</string>
+    <string name="title_overview">OVERVIEW</string>
+</resources>
