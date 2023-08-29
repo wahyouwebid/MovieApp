@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import com.wahyouwebid.app.R
 import com.wahyouwebid.app.base.BaseFragment
 import com.wahyouwebid.app.base.BaseResultState
-import com.wahyouwebid.app.common.utils.hide
 import com.wahyouwebid.app.common.utils.invisible
 import com.wahyouwebid.app.common.utils.show
 import com.wahyouwebid.app.databinding.FragmentMovieBinding

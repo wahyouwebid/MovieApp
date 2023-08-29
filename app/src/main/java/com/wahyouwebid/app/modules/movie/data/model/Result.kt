@@ -1,9 +1,9 @@
 package com.wahyouwebid.app.modules.movie.data.model
 
 
-import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 import com.wahyouwebid.app.modules.movie.domain.model.MovieItem
 
 @Keep

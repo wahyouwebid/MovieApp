@@ -5,8 +5,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.wahyouwebid.app.common.utils.hide
-import com.wahyouwebid.app.common.utils.show
 import com.wahyouwebid.app.databinding.UikitRecyclerviewBinding
 import com.wahyouwebid.app.modules.movie.domain.model.MovieItem
 import com.wahyouwebid.app.modules.movie.presentation.adapter.NowPlayingAdapter

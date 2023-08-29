@@ -2,11 +2,11 @@ package com.wahyouwebid.app.modules.detail.data.di
 
 import com.wahyouwebid.app.modules.detail.data.MovieDetailApiService
 import com.wahyouwebid.app.modules.detail.data.MovieDetailDataRepository
+import com.wahyouwebid.app.modules.detail.domain.MovieDetailRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import com.wahyouwebid.app.modules.detail.domain.MovieDetailRepository
 import retrofit2.Retrofit
 import javax.inject.Singleton
 

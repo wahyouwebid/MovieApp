@@ -3,10 +3,10 @@ package com.wahyouwebid.app.modules.movie.presentation
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wahyouwebid.app.base.BaseResultState
-import javax.inject.Inject
-import dagger.hilt.android.lifecycle.HiltViewModel
 import com.wahyouwebid.app.modules.movie.domain.MovieUseCase
 import com.wahyouwebid.app.modules.movie.domain.model.MovieItem
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 
 @HiltViewModel

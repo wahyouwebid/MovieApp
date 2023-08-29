@@ -1,10 +1,9 @@
 package com.wahyouwebid.app.modules.movie.data.model
 
 
-import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 import com.google.gson.annotations.Expose
-import com.wahyouwebid.app.modules.detail.domain.model.MovieDetailItem
+import com.google.gson.annotations.SerializedName
 
 @Keep
 data class MovieResponse(
