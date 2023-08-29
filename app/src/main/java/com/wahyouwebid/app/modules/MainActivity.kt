@@ -1,4 +1,4 @@
-package com.wahyouwebid.app.modules.main
+package com.wahyouwebid.app.modules
 
 import android.os.Bundle
 import com.wahyouwebid.app.base.BaseActivity

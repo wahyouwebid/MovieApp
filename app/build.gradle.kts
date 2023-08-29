@@ -94,7 +94,7 @@ dependencies {
     }
 
     Dependencies.TestingLib.apply {
-        testImplementation(androidJunit)
+        implementation(androidJunit)
         androidTestImplementation(espresso)
         androidTestImplementation(junit)
     }

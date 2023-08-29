@@ -6,4 +6,7 @@
     <string name="title_top_rated">TOP RATED</string>
     <string name="title_content_description">ImageView</string>
     <string name="title_overview">OVERVIEW</string>
+    <string name="title_try_again">Try Again</string>
+    <string name="title_error">Something error, please try again leter</string>
+    <string name="title_vote">%1$s Voting</string>
 </resources>

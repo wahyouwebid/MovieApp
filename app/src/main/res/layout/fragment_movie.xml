@@ -27,36 +27,105 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/_25sdp">
 
-            <com.wahyouwebid.app.common.uikit.UIKitRecyclerView
-                android:id="@+id/uikit_now_playing"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_360sdp"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:layout_height="wrap_content">
 
-            <com.wahyouwebid.app.common.uikit.UIKitRecyclerView
-                android:id="@+id/uikit_popular"
+                <com.wahyouwebid.app.common.uikit.UIKitRecyclerView
+                    android:id="@+id/uikit_now_playing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_now_playing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        layout="@layout/shimmer_now_playing"/>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <com.wahyouwebid.app.common.uikit.UIKitError
+                    android:id="@+id/uikit_error_now_playing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_180sdp"
-                app:layout_constraintTop_toBottomOf="@+id/uikit_now_playing"/>
+                android:layout_height="wrap_content">
 
-            <com.wahyouwebid.app.common.uikit.UIKitRecyclerView
-                android:id="@+id/uikit_top_rated"
+                <com.wahyouwebid.app.common.uikit.UIKitRecyclerView
+                    android:id="@+id/uikit_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        layout="@layout/shimmer_popular"/>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <com.wahyouwebid.app.common.uikit.UIKitError
+                    android:id="@+id/uikit_error_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_240sdp"
-                app:layout_constraintTop_toBottomOf="@+id/uikit_popular"/>
+                android:layout_height="wrap_content">
 
-            <com.wahyouwebid.app.common.uikit.UIKitShimmer
-                android:id="@+id/uikit_shimmer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/_25sdp"
-                app:layout_constraintTop_toTopOf="parent"/>
+                <com.wahyouwebid.app.common.uikit.UIKitRecyclerView
+                    android:id="@+id/uikit_top_rated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_top_rated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <include
+                        layout="@layout/shimmer_top_rated"/>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <com.wahyouwebid.app.common.uikit.UIKitError
+                    android:id="@+id/uikit_error_top_rated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

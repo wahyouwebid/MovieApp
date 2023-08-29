@@ -16,7 +16,7 @@
         android:theme="@style/Theme.TestIndivara.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".modules.main.MainActivity"
+            android:name=".modules.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

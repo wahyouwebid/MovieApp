@@ -8,6 +8,7 @@ import com.wahyouwebid.app.BuildConfig
 import com.wahyouwebid.app.R
 import com.wahyouwebid.app.base.BaseFragment
 import com.wahyouwebid.app.base.BaseResultState
+import com.wahyouwebid.app.common.utils.dateFormat
 import com.wahyouwebid.app.common.utils.loadImage
 import com.wahyouwebid.app.common.utils.parcelable
 import com.wahyouwebid.app.databinding.FragmentMovieDetailBinding
@@ -53,8 +54,8 @@ class MovieDetailFragment: BaseFragment<FragmentMovieDetailBinding>(FragmentMovi
         ivBackdrop.loadImage(BuildConfig.imageUrl + data.backdropPath)
         ivPoster.loadImage(BuildConfig.imageUrl + data.posterPath)
         tvTitle.text = data.title
-        tvReleaseDate.text = data.releaseDate
-        tvViewer.text = data.voteCount.toString()
+        tvReleaseDate.text = data.releaseDate?.dateFormat()
+        tvViewer.text = String.format(getString(R.string.title_vote), data.voteCount.toString())
         tvRating.text = data.voteAverage.toString()
         tvStatus.text = data.status
         tvOverview.text = data.overview

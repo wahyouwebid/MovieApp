@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import com.wahyouwebid.app.R
 import com.wahyouwebid.app.base.BaseFragment
 import com.wahyouwebid.app.base.BaseResultState
+import com.wahyouwebid.app.common.utils.hide
 import com.wahyouwebid.app.common.utils.invisible
 import com.wahyouwebid.app.common.utils.show
 import com.wahyouwebid.app.databinding.FragmentMovieBinding
@@ -15,7 +16,7 @@ import com.wahyouwebid.app.modules.movie.domain.model.MovieItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieFragment: BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::inflate) {
+class MovieFragment : BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::inflate) {
 
     private val viewModel: MovieViewModel by viewModels()
 
@@ -35,32 +36,33 @@ class MovieFragment: BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::in
 
     override fun setupObserveViewModel() {
         viewModel.nowPlaying.observe(viewLifecycleOwner) { result ->
-            when(result) {
+            when (result) {
                 is BaseResultState.Loading -> setLoadingNowPlaying(true)
-                is BaseResultState.Error -> {}
-                is BaseResultState.Success-> setDataNowPlaying(result.data)
+                is BaseResultState.Error -> setErrorNowPlaying()
+                is BaseResultState.Success -> setDataNowPlaying(result.data)
             }
         }
 
         viewModel.popular.observe(viewLifecycleOwner) { result ->
-            when(result) {
+            when (result) {
                 is BaseResultState.Loading -> setLoadingPopular(true)
-                is BaseResultState.Error -> {}
-                is BaseResultState.Success-> setDataPopular(result.data)
+                is BaseResultState.Error -> setErrorPopular()
+                is BaseResultState.Success -> setDataPopular(result.data)
             }
         }
 
         viewModel.topRated.observe(viewLifecycleOwner) { result ->
-            when(result) {
+            when (result) {
                 is BaseResultState.Loading -> setLoadingTopRated(true)
-                is BaseResultState.Error -> {}
-                is BaseResultState.Success-> setDataTopRated(result.data)
+                is BaseResultState.Error -> setErrorTopRated()
+                is BaseResultState.Success -> setDataTopRated(result.data)
             }
         }
     }
 
     private fun setDataNowPlaying(data: List<MovieItem>) = with(binding) {
         setLoadingNowPlaying(false)
+        uikitErrorNowPlaying.hide()
         uikitNowPlaying.setDataNowPlaying(getString(R.string.title_now_playing), data) {
             goToDetail(it)
         }
@@ -68,7 +70,7 @@ class MovieFragment: BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::in
 
     private fun setDataPopular(data: List<MovieItem>) = with(binding) {
         setLoadingPopular(false)
-        uikitShimmer.setLoadingPopular(false)
+        uikitErrorPopular.hide()
         uikitPopular.setDataPopular(getString(R.string.title_popular), data) {
             goToDetail(it)
         }
@@ -76,37 +78,41 @@ class MovieFragment: BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::in
 
     private fun setDataTopRated(data: List<MovieItem>) = with(binding) {
         setLoadingTopRated(false)
+        uikitErrorTopRated.hide()
         uikitTopRated.setDataTopRated(getString(R.string.title_top_rated), data) {
             goToDetail(it)
         }
     }
 
-    private fun setLoadingNowPlaying(isLoading: Boolean) = with(binding){
-        if(isLoading) {
-            uikitShimmer.setLoadingNowPlaying(true)
-            uikitNowPlaying.invisible()
+    private fun setLoadingNowPlaying(isLoading: Boolean) = with(binding) {
+        if (isLoading) {
+            shimmerNowPlaying.show()
+            uikitNowPlaying.hide()
+            uikitErrorNowPlaying.hide()
         } else {
-            uikitShimmer.setLoadingNowPlaying(false)
+            shimmerNowPlaying.hide()
             uikitNowPlaying.show()
         }
     }
 
-    private fun setLoadingPopular(isLoading: Boolean) = with(binding){
-        if(isLoading) {
-            uikitShimmer.setLoadingPopular(true)
-            uikitPopular.invisible()
+    private fun setLoadingPopular(isLoading: Boolean) = with(binding) {
+        if (isLoading) {
+            shimmerPopular.show()
+            uikitPopular.hide()
+            uikitErrorPopular.hide()
         } else {
-            uikitShimmer.setLoadingPopular(false)
+            shimmerPopular.hide()
             uikitPopular.show()
         }
     }
 
-    private fun setLoadingTopRated(isLoading: Boolean) = with(binding){
-        if(isLoading) {
-            uikitShimmer.setLoadingTopRated(true)
-            uikitTopRated.invisible()
+    private fun setLoadingTopRated(isLoading: Boolean) = with(binding) {
+        if (isLoading) {
+            shimmerTopRated.show()
+            uikitTopRated.hide()
+            uikitErrorTopRated.hide()
         } else {
-            uikitShimmer.setLoadingTopRated(false)
+            shimmerTopRated.hide()
             uikitTopRated.show()
         }
     }
@@ -116,5 +122,32 @@ class MovieFragment: BaseFragment<FragmentMovieBinding>(FragmentMovieBinding::in
             R.id.action_movieFragment_to_movieDetailFragment,
             bundleOf("data" to data)
         )
+    }
+
+    private fun setErrorNowPlaying() = with(binding){
+        uikitErrorNowPlaying.show()
+        shimmerNowPlaying.hide()
+        uikitNowPlaying.hide()
+        uikitErrorNowPlaying.setError(getString(R.string.title_now_playing)) {
+            viewModel.getNowPlaying()
+        }
+    }
+
+    private fun setErrorPopular() = with(binding){
+        uikitErrorPopular.show()
+        shimmerPopular.hide()
+        uikitPopular.hide()
+        uikitErrorPopular.setError(getString(R.string.title_popular)) {
+            viewModel.getPopular()
+        }
+    }
+
+    private fun setErrorTopRated() = with(binding){
+        uikitErrorTopRated.show()
+        shimmerTopRated.hide()
+        uikitTopRated.hide()
+        uikitErrorTopRated.setError(getString(R.string.title_top_rated)) {
+            viewModel.getTopRated()
+        }
     }
 }
