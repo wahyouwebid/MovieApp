@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestIndivara</string>
+    <string name="app_name">MovieDb</string>
     <string name="title_movie">MOVIES</string>
     <string name="title_now_playing">NOW PLAYING</string>
     <string name="title_popular">POPULAR</string>

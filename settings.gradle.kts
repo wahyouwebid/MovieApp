@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TestIndivara"
+rootProject.name = "MovieApp"
 include(":app")
